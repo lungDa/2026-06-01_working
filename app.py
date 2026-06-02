@@ -42,32 +42,7 @@ if st.button("! 點我立馬發送通知到 Discord"):
         st.error("XX! 找不到 Discord Webhook 網址！請確保您已在 Streamlit 的 Secrets 中設定 `DISCORD_WEBHOOK_URL`。")
     else:
         with st.spinner("正在將訊息打包衝向 Discord..."):
-            status = send_discord_webhook(WEname: 鬧鐘助理)
-
-on:
-  workflow_dispatch: # 允許手動觸發測試
-  schedule:
-    - cron: '30 22 * * *' # 每天 UTC 22:30 執行（等於台灣時間隔天早上 06:30）
-
-jobs:
-  check-sheet-and-alarm:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 複製程式碼
-      uses: actions/checkout@v4.2.2
-
-    - name: 設定 Python 環境
-      uses: actions/setup-python@v5.4.0
-      with:
-        python-version: '3.11'
-
-    - name: 安裝必要套件
-      run: pip install requests
-
-    - name: 執行定時鬧鐘
-      env:
-        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-      run: python app.py input_title, input_content)
+            status = send_discord_webhook(WEBHOOK_URL, input_title, input_content)
             
             if status == 204:
                 st.success("O 發送成功！快去你的 Discord 頻道看看有沒有跳出訊息！")
