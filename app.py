@@ -42,7 +42,7 @@ if st.button("! 點我立馬發送通知到 Discord"):
         st.error("XX! 找不到 Discord Webhook 網址！請確保您已在 Streamlit 的 Secrets 中設定 `DISCORD_WEBHOOK_URL`。")
     else:
         with st.spinner("正在將訊息打包衝向 Discord..."):
-            status = send_discord_webhook(WEname: 鬧鐘助理
+            status = send_discord_webhook(WEname: 鬧鐘助理)
 
 on:
   workflow_dispatch: # 允許手動觸發測試
